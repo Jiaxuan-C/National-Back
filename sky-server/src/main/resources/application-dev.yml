@@ -1,0 +1,19 @@
+Rt-socket: http://buptitei.natapp1.cc
+sky:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    host: 10.112.184.214
+    port: 30006
+#    host: 127.0.0.1
+#    port: 3306
+    database: flexible_production_line
+    username: root
+    password: cjx
+remote:
+  run-remote-url: ${Rt-socket}/workflow/debugRun
+  stop-remote-url: ${Rt-socket}/workflow/remove
+  remote-socket: ${Rt-socket}
+  reset-remote-workflow-id: workflow.0f1c056b4efe44ada85ee6c4a6a11de7
+  stop-reset-remote-workflow-id: workflow.0f1c056b4efe44ada85ee6c4a6a11de7
+#  mode: debug
+  mode: produce

@@ -28,4 +28,9 @@ public interface OrderService {
      */
     List<Order> getAll();
 
+    /**
+     * 查询最新一条订单信息
+     * @return
+     */
+    Order getLast();
 }

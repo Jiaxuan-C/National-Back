@@ -29,6 +29,11 @@ public class ModelServiceImpl implements ModelService {
     @Override
     public Model getById(Long id) {
         Model model = modelMapper.selectById(id);
+        if (id == 1) {
+            model.setRemoteApiPost("user.project1.workflow.e0e8eb6db0554c539f55d1aab99ce0cf");
+        } else if (id == 2) {
+            model.setRemoteApiPost("user.project1.workflow2");
+        }
         return  model;
     }
 

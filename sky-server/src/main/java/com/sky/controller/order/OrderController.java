@@ -46,4 +46,11 @@ public class OrderController {
         return Result.success(list);
     }
 
+    @GetMapping("/order/getLast")
+    @ApiOperation("查询最新一条订单")
+    public Result<Order> getLast() {
+        Order order = orderService.getLast();
+        return Result.success(order);
+    }
+
 }

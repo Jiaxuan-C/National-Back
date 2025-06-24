@@ -63,12 +63,12 @@ public class OrderServiceImpl implements OrderService {
         String url = remoteConfigurationProperties.getRunRemoteUrl();
         HashMap<String, String> paramMap = new HashMap<>();
         // 查询启动流
-        paramMap.put("workflowId", model.getRemoteApiPost());
+        paramMap.put("workflowInstanceId", model.getRemoteApiPost());
         if (!remoteConfigurationProperties.getMode().equals("debug")) {
             try {
                 HttpClientUtil.doPost(url, paramMap);
             } catch (IOException e) {
-                log.info("远程调用失败！" + " " + url + " " + paramMap.get("workflowId"));
+                log.info("远程调用失败！" + " " + url + " " + paramMap.get("workflowInstanceId"));
                 throw new RuntimeException(e);
             }
         }
@@ -84,13 +84,13 @@ public class OrderServiceImpl implements OrderService {
         // 停止生产
         String url = remoteConfigurationProperties.getStopRemoteUrl();
         HashMap<String, String> paramMap = new HashMap<>();
-        paramMap.put("workflowId", model.getRemoteApiPost());
+        paramMap.put("workflowInstanceId", model.getRemoteApiPost());
             // 发送post
         if (!remoteConfigurationProperties.getMode().equals("debug")) {
             try {
                 HttpClientUtil.doPost(url, paramMap);
             } catch (IOException e) {
-                log.info("远程调用失败！" + " " + url + " " + paramMap.get("workflowId"));
+                log.info("远程调用失败！" + " " + url + " " + paramMap.get("workflowInstanceId"));
                 throw new RuntimeException(e);
             }
         }
@@ -101,6 +101,11 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public List<Order> getAll() {
         return orderMapper.getAllOrders();
+    }
+
+    @Override
+    public Order getLast() {
+        return orderMapper.getLastOrder();
     }
 
 }

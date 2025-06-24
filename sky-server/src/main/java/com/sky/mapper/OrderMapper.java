@@ -22,4 +22,6 @@ public interface OrderMapper {
     @Select("select * from orders")
     List<Order> getAllOrders();
 
+    @Select("select * from orders order by order_time desc limit 1")
+    Order getLastOrder();
 }

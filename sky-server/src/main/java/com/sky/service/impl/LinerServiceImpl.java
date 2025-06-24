@@ -21,15 +21,15 @@ public class LinerServiceImpl implements LinerService {
     RemoteConfigurationProperties remoteConfigurationProperties;
     @Override
     public void reset() {
-        String workflowId = remoteConfigurationProperties.getResetRemoteWorkflowId();
+        String workflowInstanceId = remoteConfigurationProperties.getResetRemoteworkflowInstanceId();
         HashMap<String, String> paramMap = new HashMap<>();
-        paramMap.put("workflowId", workflowId);
+        paramMap.put("workflowInstanceId", workflowInstanceId);
         String url = remoteConfigurationProperties.getRunRemoteUrl();
         if (!remoteConfigurationProperties.getMode().equals("debug")) {
             try {
                 HttpClientUtil.doPost(url, paramMap);
             } catch (IOException e) {
-                log.info("远程调用失败！" + " " + url + " " + paramMap.get("workflowId"));
+                log.info("远程调用失败！" + " " + url + " " + paramMap.get("workflowInstanceId"));
                 throw new RuntimeException(e);
             }
         }
@@ -37,15 +37,15 @@ public class LinerServiceImpl implements LinerService {
 
     @Override
     public void stopReset() {
-        String workflowId = remoteConfigurationProperties.getStopResetRemoteWorkflowId();
+        String workflowInstanceId = remoteConfigurationProperties.getStopResetRemoteworkflowInstanceId();
         HashMap<String, String> paramMap = new HashMap<>();
-        paramMap.put("workflowId", workflowId);
+        paramMap.put("workflowInstanceId", workflowInstanceId);
         String url = remoteConfigurationProperties.getStopRemoteUrl();
         if (!remoteConfigurationProperties.getMode().equals("debug")) {
             try {
                 HttpClientUtil.doPost(url, paramMap);
             } catch (IOException e) {
-                log.info("远程调用失败！" + " " + url + " " + paramMap.get("workflowId"));
+                log.info("远程调用失败！" + " " + url + " " + paramMap.get("workflowInstanceId"));
                 throw new RuntimeException(e);
             }
         }

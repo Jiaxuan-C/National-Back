@@ -8,6 +8,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
 /**
  * @ Author: Jiaxuan Chen
  * @ Version: v1.0
@@ -23,9 +27,9 @@ public class RemoteConfigurationProperties {
 
     String stopRemoteUrl;
 
-    String resetRemoteWorkflowId;
+    String resetRemoteworkflowInstanceId;
 
-    String stopResetRemoteWorkflowId;
+    String stopResetRemoteworkflowInstanceId;
 
     String remoteSocket;
 
